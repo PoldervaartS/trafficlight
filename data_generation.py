@@ -74,13 +74,13 @@ def keyInputModel():
             typeIn = lightTypes.blank
 
 
-def modelVerification(accuracy:int, outFile:str):
+def modelVerification(accuracy:float, outFile:str):
     # will need to open the file
     # first line will be model accuracy
     output = MockClassification(accuracy)
     f = open(outFile, 'w')
     f.write('TrueState,MockClassification,StateStatus\n')
-    while True:
+    for i in range(10000):
         # every line after that will be the model output and the FSM output
         mockClassification = output.get_output()
         trueState = output.get_state()
