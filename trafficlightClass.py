@@ -41,3 +41,4 @@ class TrafficLight:
         else:
             self.breakCount+=1
 
+        return self.currentType

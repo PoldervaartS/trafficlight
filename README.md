@@ -3,6 +3,8 @@ This is a finite state machine created centered around the actions of Traffic Li
 
 To ward off the inherent noise of directly feeding network classifications to planning modules, the intermediate step of a state machine is used to guard against innacurate classifications that break the traditional traffic flow. 
 
+It works by maintaining the flow under normal circumstances (Red State, Green Input) the state machine will immediately change. And each time there is a reading that does not fit the current flow (ie Green State, Red Input) it will instead of simply changing, count how many flow breaking entries were input in a row so far. If the number exceeds 1, then the flow will break and the state will be changed to Red.
+
 
 ![Image of the flowchart for the internal Traffic Light state machine. Can also be read in the "lightflow" dict in trafficlightClass.py](TrafficLightStateFlowchart.png "Light State Flowchart")
 
