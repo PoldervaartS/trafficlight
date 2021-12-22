@@ -4,6 +4,8 @@ This is a finite state machine created centered around the actions of Traffic Li
 To ward off the inherent noise of directly feeding network classifications to planning modules, the intermediate step of a state machine is used to guard against innacurate classifications that break the traditional traffic flow. 
 
 
+![Image of the flowchart for the internal Traffic Light state machine. Can also be read in the "lightflow" dict in trafficlightClass.py](TrafficLightStateFlowchart.png "Light State Flowchart")
+
 ## Data Generation
 Usage: `python data_generation.py -o <outputFile to write to> -a <accuracy of mock model>`
 
@@ -16,6 +18,10 @@ This script will write 10,000 samples of the generated data to the data file spe
 
 ## Results
 
+This graph shows the performance of the finite state machine given various mock classifier accuracies resulting in randomly assigning a traffic light class. 
 
-pictures of results goes here once I do the data analysis. Make it look *pretty*
-With a planned rate of 10hz, these graphs show the performance of the finite state machine given various accuracies resulting in randomly assigning a different traffic light class. 
+![State Accuracy on the Y, Mock Classifier accuracy on the X. This shows a trend line where the State accuracy is correlated with the Mock Classifier Accuracy giving a smaller performance boost at high accuracy levels and a larger boost at low accuracy.](StateAccuracyResults.PNG "Results Graph")
+
+Each plot points accuracy is determined from 10,000 generated data samples at the given Mock Classifier Accuracy with a total of 160,000 samples. Every 1% drop in mock classifier accuracy results in a 0.8% drop in state accuracy. As a result of this the increased performance by the state intermediary ranges from a 5% performance increase @ 95% accuracy to a 20% performance increase @ 10% accuracy. 
+
+Assuming a 10hz capture rate for images for over 10,000 data points this state machine could provide up to 200 seconds of correct data when the raw predictions from the classifiers are incorrect. 
