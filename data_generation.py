@@ -69,7 +69,7 @@ def keyInputModel():
         elif(inputVal == b'y'):
             typeIn = lightTypes.yellow
         elif(inputVal == b'G'):
-            typeIn = lightTypes.yieldGreen
+            typeIn = lightTypes.turnYield
         elif(inputVal == b'b'):
             typeIn = lightTypes.blank
 

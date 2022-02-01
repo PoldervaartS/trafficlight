@@ -13,7 +13,7 @@ class MockClassification:
 
     def get_output(self):
         self.count += 1
-        # change light types every 20 times
+        # change light types every 5 times
         if(self.count % 5 == 0):
             self.currentState = random.choice(TrafficLight.nextLights(self.currentState))
         if random.random() < self.accuracy:
